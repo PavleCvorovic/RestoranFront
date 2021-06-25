@@ -8,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class ReservationPageComponent implements OnInit {
 
   constructor() { }
+  pisac = ['marko','kamcsda','dsad'];
+  newFormReservation = 0;
 
   ngOnInit(): void {
+  }
+
+  rezervisi()
+  {
+      this.newFormReservation = 1;
+      console.log("fadvssfas");
+
   }
 
 }
