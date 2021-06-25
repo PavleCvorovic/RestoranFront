@@ -65,15 +65,15 @@
         <i class="mdi mdi-crosshairs-gps menu-icon"></i>
         <span class="menu-title">Meni</span>
         <i class="menu-arrow"></i>
-    <select class="form-control" #f (change)="swichSidebar(f.value)">
-<option>Izaberite opciju</option>
-      <option value="1">
+    <select class="form-control bg-dark " #f (change)="swichSidebar(f.value)">
+<option ></option>
+      <option value="1" class="bijela">
       Izbrisi jelo
       </option>
-      <option  value="2">
+      <option  value="2" class="bijela">
        Dodaj jelo
       </option>
-      <option value="3">
+      <option value="3" class="bijela">
         Modifikuj jelo
       </option>
 
@@ -105,8 +105,8 @@
     </ul>
   </nav>
 
-  <div class="col-md-6" *ngIf="Admintabs===1">
-    <table class="table ">
+  <div class="col-md-6" >
+    <table class="table " *ngIf="Admintabs===1">
       <thead>
       <tr>
 
@@ -124,6 +124,52 @@
 
       </tbody>
     </table>
+
+    <div class="form-control" *ngIf="Admintabs==2">
+      <h3> Dodajte jelo </h3>
+      <div class="row" >
+      <input class="form-control bg-dark"style="color:white" placeholder="Unesite naziv" [(ngModel)]="newfood.naziv">
+      <input class="form-control bg-dark"style="color:white" placeholder="Unesite opis" [(ngModel)]="newfood.opis">
+      <input class="form-control bg-dark"style="color:white" placeholder="Unesite url slike" [(ngModel)]="newfood.slika">
+        <button class="btn btn-primary" (click)="addfood()">Dodaj</button>
+      </div>
+    </div>
+    <div *ngIf="Admintabs==3">
+      <table class="table " >
+        <thead>
+        <tr>
+
+          <th scope="col">Meni</th>
+          <th scope="col">Naziv</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let a of meni">
+          <th scope="row">1</th>
+          <td>{{a.naziv}}</td>
+          <td><button class="btn btn-danger" >Modifikuj</button></td>
+        </tr>
+
+        </tbody>
+      </table>
+
+      <h3> Dodajte jelo </h3>
+      <div class="row" >
+        <input class="form-control bg-dark"style="color:white" placeholder="Unesite naziv">
+        <input class="form-control bg-dark"style="color:white" placeholder="Unesite opis">
+        <input class="form-control bg-dark"style="color:white" placeholder="Unesite url slike">
+        <button class="btn btn-primary">Promijeni</button>
+      </div>
+
+
+
+
+
+
+
+
+    </div>
 
   </div>
 

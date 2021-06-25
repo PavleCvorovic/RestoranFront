@@ -9,6 +9,11 @@ import {ServisService} from '../servis.service';
 export class AdminBoardComponent implements OnInit {
   meni: any;
   Admintabs:number;
+  newfood:any={
+    naziv:'',
+    opis:'',
+    slika:''
+  };
 
   constructor(public servis:ServisService) {
   }
@@ -16,6 +21,22 @@ export class AdminBoardComponent implements OnInit {
   ngOnInit(): void {
     this.getMenu();
   }
+
+
+
+
+
+  addfood(){
+    console.log(this.newfood.naziv)
+    this.servis.postMenuItem(this.newfood).subscribe();
+
+
+  }
+
+
+
+
+
 
 
 swichSidebar(a){
@@ -28,7 +49,10 @@ this.Admintabs=1;
       this.Admintabs=2;
       break;
     }
-
+    case "3" :{
+      this.Admintabs=3;
+      break;
+    }
   }
 
 }

@@ -14,5 +14,8 @@ export class ServisService {
   delMenuItem(id){
    return this.http.delete("http://localhost:8000/api/foodDel/" +id);
  }
+ postMenuItem(info:any){
+   return this.http.post("http://localhost:8000/api/addFood" ,info);
+ }
 
 }

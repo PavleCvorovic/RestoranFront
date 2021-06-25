@@ -7,6 +7,7 @@ import { ReservationPageComponent } from './reservation-page/reservation-page.co
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminBoardComponent } from './admin-board/admin-board.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,12 +17,14 @@ import {HttpClientModule} from '@angular/common/http';
     AdminLoginComponent,
     AdminBoardComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
 
-  ],
+
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
