@@ -1,1 +1,70 @@
-<p>reservation-page works!</p>
+<div *ngIf ="newFormReservation == 0">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Broj stola</th>
+      <th scope="col">Kapacitet stola</th>
+      <th scope="col">Rezervisi</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of pisac">
+      <th scope="row">{{ p }}</th>
+      <td>Mark</td>
+      <td><button (click)="rezervisi()">Rezervisi</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div *ngIf="newFormReservation == 1">
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Sekula_Drljevi%C4%87.jpg" id="icon" alt="User Icon" style="width:15px;border-radius: 50%"/>
+    </div>
+
+    <!-- Login Form -->
+    <form >
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Ime i prezime</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Broj gostiju</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect2">Termin dolaska</label>
+
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Dodatne zahtjevi</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+      </form>
+      <input type="submit" class="fadeIn fourth" value="Zakazi">
+      <input type="submit" class="fadeIn fourth" value="Otkazi" >
+
+    </form>
+
+
+
+  </div>
+</div>
+</div>
