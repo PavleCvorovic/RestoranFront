@@ -8,8 +8,15 @@ import {ServisService} from '../servis.service';
 })
 export class AdminBoardComponent implements OnInit {
   meni: any;
+  dish:any;
   Admintabs:number;
+  tabMod:boolean=false;
   newfood:any={
+    naziv:'',
+    opis:'',
+    slika:''
+  };
+  modfood:any={
     naziv:'',
     opis:'',
     slika:''
@@ -32,7 +39,20 @@ export class AdminBoardComponent implements OnInit {
 
 
   }
+  getDishId(a){
 
+    this.servis.getSingleDish(a).subscribe(res => {
+        this.dish= res;
+      },
+      err => {
+        console.log(err);
+
+      }
+    );
+    this.tabMod=true;
+
+
+  }
 
 
 
@@ -93,7 +113,12 @@ this.Admintabs=1;
     )
 
   }
+ editDish(){
 
+    this.servis.editMenuItem(this.dish.id,this.modfood).subscribe();
+this.tabMod=false;
+
+ }
 
 
 

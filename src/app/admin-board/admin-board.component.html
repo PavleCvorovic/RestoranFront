@@ -117,7 +117,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let a of meni">
-        <th scope="row">1</th>
+        <th scope="row">{{a.id}}</th>
         <td>{{a.naziv}}</td>
         <td><button class="btn btn-danger" (click)="delMenuItem(a.id)">Izbrisi</button></td>
       </tr>
@@ -146,23 +146,23 @@
         </thead>
         <tbody>
         <tr *ngFor="let a of meni">
-          <th scope="row">1</th>
+          <th scope="row">{{a.id}}</th>
           <td>{{a.naziv}}</td>
-          <td><button class="btn btn-danger" >Modifikuj</button></td>
+          <td><button class="btn btn-info" (click)="getDishId(a.id)">Modifikuj</button></td>
         </tr>
 
         </tbody>
       </table>
-
-      <h3> Dodajte jelo </h3>
+<div  *ngIf="tabMod===true">
+      <h3> Modifikujte jelo </h3>
       <div class="row" >
-        <input class="form-control bg-dark"style="color:white" placeholder="Unesite naziv">
-        <input class="form-control bg-dark"style="color:white" placeholder="Unesite opis">
-        <input class="form-control bg-dark"style="color:white" placeholder="Unesite url slike">
-        <button class="btn btn-primary">Promijeni</button>
+        <input class="form-control bg-dark"style="color:white" placeholder="{{dish.naziv}}" [(ngModel)]="modfood.naziv">
+        <input class="form-control bg-dark"style="color:white"  placeholder="{{dish.opis}}" [(ngModel)]="modfood.opis">
+        <input class="form-control bg-dark"style="color:white"  placeholder="{{dish.slika}}"[(ngModel)]="modfood.slika">
+        <button class="btn btn-primary" (click)="editDish()">Promijeni</button>
       </div>
 
-
+</div>
 
 
 
