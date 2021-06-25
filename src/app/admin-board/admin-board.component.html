@@ -39,36 +39,13 @@
           </div>
         </a>
       </li>
-      <li class="nav-item pt-3">
-        <a class="nav-link d-block" href="index.html">
-          <img class="sidebar-brand-logo" src="/assets/images/logo.svg" alt="" />
-          <img class="sidebar-brand-logomini" src="/assets/images/logo-mini.svg" alt="" />
-          <div class="small font-weight-light pt-1">Responsive Dashboard</div>
-        </a>
-        <form class="d-flex align-items-center" action="#">
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <i class="input-group-text border-0 mdi mdi-magnify"></i>
-            </div>
-            <input type="text" class="form-control border-0" placeholder="Search" />
-          </div>
-        </form>
-      </li>
+
+
       <li class="pt-2 pb-1">
         <span class="nav-item-head">Meni</span>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="mdi mdi-compass-outline menu-icon"></i>
-          <span class="menu-title">Dashboard</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-          <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-          <span class="menu-title">Meni</span>
-          <i class="menu-arrow"></i>
-        </a>
+
+
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
@@ -82,13 +59,25 @@
             </li>
           </ul>
         </div>
-      </li>
+
       <li class="nav-item">
-        <a class="nav-link" href="pages/icons/mdi.html">
-          <i class="mdi mdi-contacts menu-icon"></i>
-          <span class="menu-title">Icons</span>
-        </a>
-      </li>
+
+        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+        <span class="menu-title">Meni</span>
+        <i class="menu-arrow"></i>
+    <select class="form-control" #f (change)="swichSidebar(f.value)">
+<option>Izaberite opciju</option>
+      <option value="1">
+      Izbrisi jelo
+      </option>
+      <option  value="2">
+       Dodaj jelo
+      </option>
+      <option value="3">
+        Modifikuj jelo
+      </option>
+
+    </select></li>
       <li class="nav-item">
         <a class="nav-link" href="pages/forms/basic_elements.html">
           <i class="mdi mdi-format-list-bulleted menu-icon"></i>
@@ -116,7 +105,7 @@
     </ul>
   </nav>
 
-  <div class="col-md-6">
+  <div class="col-md-6" *ngIf="Admintabs===1">
     <table class="table ">
       <thead>
       <tr>

@@ -8,6 +8,7 @@ import {ServisService} from '../servis.service';
 })
 export class AdminBoardComponent implements OnInit {
   meni: any;
+  Admintabs:number;
 
   constructor(public servis:ServisService) {
   }
@@ -15,6 +16,23 @@ export class AdminBoardComponent implements OnInit {
   ngOnInit(): void {
     this.getMenu();
   }
+
+
+swichSidebar(a){
+  switch(a) {
+    case "1": {
+this.Admintabs=1;
+      break;
+    }
+    case "2" :{
+      this.Admintabs=2;
+      break;
+    }
+
+  }
+
+}
+
 
 
 
