@@ -17,8 +17,10 @@ export class ReservationPageComponent implements OnInit {
   rezervisi()
   {
       this.newFormReservation = 1;
-      console.log("fadvssfas");
-
+  }
+  otkazi()
+  {
+    this.newFormReservation = 0;
   }
 
 }

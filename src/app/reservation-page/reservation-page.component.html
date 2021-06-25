@@ -12,7 +12,7 @@
     <tr *ngFor="let p of pisac">
       <th scope="row">{{ p }}</th>
       <td>Mark</td>
-      <td><button (click)="rezervisi()">Rezervisi</button></td>
+      <td><button (click)="rezervisi()" class="btn btn-primary">Rezervisi</button></td>
     </tr>
   </tbody>
 </table>
@@ -33,11 +33,11 @@
     </div>
 
     <!-- Login Form -->
-    <form >
+    <!-- <form >
       <form>
         <div class="form-group">
           <label for="exampleFormControlInput1">Ime i prezime</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ime i prezime">
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1">Broj gostiju</label>
@@ -47,10 +47,16 @@
             <option>3</option>
             <option>4</option>
             <option>5</option>
+            <option>6</option>
           </select>
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect2">Termin dolaska</label>
+          <form class="form-inline">
+                <input class="col-1" type="text" placeholder = "dan">-
+                <input class="col-2" type="text" placeholder = "mjesec">-
+                <input class="col-3" type="text" placeholder = "godina">
+          </form>
 
         </div>
         <div class="form-group">
@@ -59,9 +65,60 @@
         </div>
       </form>
       <input type="submit" class="fadeIn fourth" value="Zakazi">
-      <input type="submit" class="fadeIn fourth" value="Otkazi" >
+      <input type="submit" class="fadeIn fourth" value="Otkazi" (click)= "otkazi()">
 
-    </form>
+    </form> -->
+    <div id="booking" class="section">
+    <div class="section-center">
+        <div class="container">
+            <div class="row">
+                <div class="booking-form">
+                    <div class="form-header">
+                        <h1>Rezervisi sto broj: broj stola stoji</h1>
+                    </div>
+                    <form>
+                        <div class="form-group"> <input class="form-control" type="text" placeholder="Ime i prezime"> <span class="form-label">Ime i prezime</span> </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group"> <input class="form-control" type="date" required> <span class="form-label">Datum rezervacije</span> </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group"> <input  type="number" min="0" max= "23" class="form-control "   placeholder="casova"  style="width:140px "> <span class="form-label">Casova</span> </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group"> <input  type="number" min="0" max= "59" class="form-control "   placeholder="minuta"  style="width:140px "> <span class="form-label">Minuta</span> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="form-group"> <select class="form-control" required>
+                                        <option value="" selected hidden>Broj gostiju</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                    </select> <span class="select-arrow"></span> <span class="form-label">Rooms</span> </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group"> <input class="form-control" type="email" placeholder="Unesite Email"> <span class="form-label">Email</span> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group"> <input class="form-control" type="tel" placeholder="Unesite broj telefona"> <span class="form-label">Phone</span> </div>
+                            </div>
+                        </div>
+                        <div class="form-btn"> <button class="submit-btn">Rezervisi</button> </div><br>
+                        <div class="form-btn"> <button class="submit-btn" (click)="otkazi()">Otkazi</button> </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
