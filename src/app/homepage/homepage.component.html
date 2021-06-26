@@ -1,1 +1,155 @@
-<p>homepage works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+</style>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap eCommerce Page Template</title>
+  <!-- Bootstrap -->
+</head>
+<body class="bg-dark">
+<nav  class="navbar navbar-expand-lg navbar-dark bg-dark" >
+  <div class="container">
+    <a class="navbar-brand" href="#">Moja kuhinja;</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Rezervacija</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Kontaktirajte nas</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+<div class="container mt-3" >
+
+<div class="container mt-3">
+<div id="a" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#a" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#a" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#a" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/assets/slike/vina.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 style="font-family: 'Dancing Script', cursive;color:red">Budite prvi rezervisite svoje mjesto </h1>
+        <h3 style="font-family: 'Dancing Script', cursive;color:red">Najbolja vina;</h3>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/assets/slike/trpeza.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 style="font-family: 'Monoton', cursive; ">Porodicna atmosfera</h1>
+        <h3 style="font-family: 'Monoton', cursive; " >Egzoticna   jela</h3>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/assets/slike/shef.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 style="font-family: 'Bangers', cursive;color:cadetblue">Upoznajte nas</h1>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <br>
+<hr>
+
+<h2 class="text-center" style="color:red; font-family: 'Monoton';"  >Izdvajamo</h2>
+<hr>
+<div class="container" *ngFor="let a of meni">
+  <div class="row text-center">
+    <div class="col-md-4 pb-1 pb-md-0">
+      <div class="card">
+        <img class="card-img-top" src="{{a.slika}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Hamburger&nbsp;</h5>
+          <p class="card-text">Veoma ukusni spoj mesa i crnog integralnog hleba, nesto za sve .</p>
+          <p class="btn btn-primary" style="color: whitesmoke">3.20 eur</p>
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+</div>
+<hr>
+<div class="container text-white bg-dark p-4">
+  <div class="row">
+    <div class="col-6 col-md-8 col-lg-7">
+      <div class="row text-center">
+        <div class="col-sm-6 col-md-4 col-lg-4 col-12">
+          <ul class="list-unstyled">
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4 col-12">
+          <ul class="list-unstyled">
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4 col-12">
+          <ul class="list-unstyled">
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+            <li class="btn-link"> <a>Link anchor</a> </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-lg-5 col-6">
+      <address>
+        <strong>MyStoreFront, Inc.</strong><br>
+        Indian Treasure Link<br>
+        Quitman, WA, 99110-0219<br>
+        <abbr title="Phone">P:</abbr> (123) 456-7890
+      </address>
+      <address>
+        <strong>Full Name</strong><br>
+        <a href="mailto:#">first.last@example.com</a>
+      </address>
+    </div>
+  </div>
+</div>
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>Copyright © MyWebsite. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+
+<script type="text/javascript"></script>
+
+</div>
+</body>
+</html>
