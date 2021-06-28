@@ -72,22 +72,28 @@
 
 <h2 class="text-center" style="color:red; font-family: 'Monoton';"  >Izdvajamo</h2>
 <hr>
-<div class="container" *ngFor="let a of meni">
-  <div class="row text-center">
-    <div class="col-md-4 pb-1 pb-md-0">
-      <div class="card">
-        <img class="card-img-top" src="{{a.slika}}" alt="Card image cap">
+  <div class="col-md-12">
+
+
+  <div class="text-center">
+
+
+    <div class="row">
+      <div class=" col-md-4 pb-1 pb-md-0" *ngFor="let a of meni">
+        <div class="card">
+
+        <img class="card-img-top "  style="height: 300px" src="{{a.slika}}" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Hamburger&nbsp;</h5>
-          <p class="card-text">Veoma ukusni spoj mesa i crnog integralnog hleba, nesto za sve .</p>
+          <h5 class="card-title">{{a.naziv}}</h5>
+          <p class="card-text">{{a.opis}}.</p>
           <p class="btn btn-primary" style="color: whitesmoke">3.20 eur</p>
         </div>
       </div>
     </div>
-
-   
+    </div>
   </div>
-</div>
+  </div>
+
 <hr>
 <div class="container text-white bg-dark p-4">
   <div class="row">
@@ -145,7 +151,7 @@
     </div>
   </div>
 </footer>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
 
 
 <script type="text/javascript"></script>
