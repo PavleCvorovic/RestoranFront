@@ -9,24 +9,31 @@ import {ServisService} from '../servis.service';
 export class AdminBoardComponent implements OnInit {
   meni: any;
   dish:any;
+  tables:any;
   Admintabs:number;
   tabMod:boolean=false;
   newfood:any={
     naziv:'',
     opis:'',
-    slika:''
+    slika:'',
+    cijena:''
   };
   modfood:any={
     naziv:'',
     opis:'',
-    slika:''
+    slika:'',
+    cijena:''
   };
+kapacitet:any={
+  kapacitet:''
+};
 
   constructor(public servis:ServisService) {
   }
 
   ngOnInit(): void {
     this.getMenu();
+    this.getTables();
   }
 
 
@@ -34,8 +41,15 @@ export class AdminBoardComponent implements OnInit {
 
 
   addfood(){
-    console.log(this.newfood.naziv)
+
     this.servis.postMenuItem(this.newfood).subscribe();
+
+
+  }
+  addTable(){
+
+
+    this.servis.addTable(this.kapacitet).subscribe();
 
 
   }
@@ -43,6 +57,8 @@ export class AdminBoardComponent implements OnInit {
 
     this.servis.getSingleDish(a).subscribe(res => {
         this.dish= res;
+
+
       },
       err => {
         console.log(err);
@@ -52,6 +68,17 @@ export class AdminBoardComponent implements OnInit {
     this.tabMod=true;
 
 
+  }
+  reserveTableAdmin(id,sw) {
+    let idd: any = {
+      id
+    }
+    idd.id = id
+    if (sw == true) {
+      this.servis.reserveTableAdmin(idd).subscribe()
+    } else {
+      this.servis.unreserveTableAdmin(idd).subscribe()
+    }
   }
 
 
@@ -71,6 +98,18 @@ this.Admintabs=1;
     }
     case "3" :{
       this.Admintabs=3;
+      break;
+    }
+    case "4" :{
+      this.Admintabs=4;
+      break;
+    }
+    case "5" :{
+      this.Admintabs=5;
+      break;
+    }
+    case "6" :{
+      this.Admintabs=6;
       break;
     }
   }
@@ -101,6 +140,29 @@ this.Admintabs=1;
 
       }
     )
+  }
+
+  getTables() {
+
+    this.servis.getTables().subscribe(res => {
+        this.tables = res;
+      },
+      err => {
+        console.log(err);
+
+      }
+    )
+  }
+  delTables(id){
+    this.servis.delTables(id).subscribe(res => {
+
+      },
+      err => {
+        console.log(err);
+
+      }
+    )
+
   }
   delMenuItem(id){
     this.servis.delMenuItem(id).subscribe(res => {

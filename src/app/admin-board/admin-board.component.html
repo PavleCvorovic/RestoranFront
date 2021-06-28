@@ -63,7 +63,7 @@
       <li class="nav-item">
 
         <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-        <span class="menu-title">Meni</span>
+        <span class="menu-title">Hrana</span>
         <i class="menu-arrow"></i>
     <select class="form-control bg-dark " #f (change)="swichSidebar(f.value)">
 <option ></option>
@@ -79,30 +79,41 @@
 
     </select></li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/forms/basic_elements.html">
-          <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-          <span class="menu-title">Forms</span>
-        </a>
-      </li>
+
+        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+        <span class="menu-title">Stolovi</span>
+        <i class="menu-arrow"></i>
+        <select class="form-control bg-dark " #e (change)="swichSidebar(e.value)">
+          <option ></option>
+          <option value="4" class="bijela">
+            Izbrisi sto
+          </option>
+          <option  value="5" class="bijela">
+            Dodaj sto
+          </option>
+
+
+        </select></li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/charts/chartjs.html">
-          <i class="mdi mdi-chart-bar menu-icon"></i>
-          <span class="menu-title">Charts</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="pages/tables/basic-table.html">
-          <i class="mdi mdi-table-large menu-icon"></i>
-          <span class="menu-title">Tables</span>
-        </a>
-      </li>
-      <li class="nav-item pt-3">
-        <a class="nav-link" href="http://bootstrapdash.com/demo/plus-free/documentation/documentation.html" target="_blank">
-          <i class="mdi mdi-file-document-box menu-icon"></i>
-          <span class="menu-title">Documentation</span>
-        </a>
-      </li>
+
+        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+        <span class="menu-title">Rezervacije</span>
+        <i class="menu-arrow"></i>
+        <select class="form-control bg-dark " #r (change)="swichSidebar(r.value)">
+          <option ></option>
+          <option value="6" class="bijela">
+           Rezervisi rucno
+          </option>
+          <option  value="2" class="bijela">
+            Dodaj jelo
+          </option>
+          <option value="3" class="bijela">
+            Modifikuj jelo
+          </option>
+
+        </select></li>
     </ul>
+
   </nav>
 
   <div class="col-md-6" >
@@ -130,7 +141,8 @@
       <div class="row" >
       <input class="form-control bg-dark"style="color:white" placeholder="Unesite naziv" [(ngModel)]="newfood.naziv">
       <input class="form-control bg-dark"style="color:white" placeholder="Unesite opis" [(ngModel)]="newfood.opis">
-      <input class="form-control bg-dark"style="color:white" placeholder="Unesite url slike" [(ngModel)]="newfood.slika">
+        <input class="form-control bg-dark"style="color:white"  type="number" placeholder="Unesite cijenu " [(ngModel)]="newfood.cijena">
+        <input class="form-control bg-dark"style="color:white" placeholder="Unesite url slike" [(ngModel)]="newfood.slika">
         <button class="btn btn-primary" (click)="addfood()">Dodaj</button>
       </div>
     </div>
@@ -155,10 +167,12 @@
       </table>
 <div  *ngIf="tabMod===true">
       <h3> Modifikujte jelo </h3>
+  <p> Popunite sva polja </p>
       <div class="row" >
-        <input class="form-control bg-dark"style="color:white" placeholder="{{dish.naziv}}" [(ngModel)]="modfood.naziv">
-        <input class="form-control bg-dark"style="color:white"  placeholder="{{dish.opis}}" [(ngModel)]="modfood.opis">
-        <input class="form-control bg-dark"style="color:white"  placeholder="{{dish.slika}}"[(ngModel)]="modfood.slika">
+        <input class="form-control bg-dark"style="color:white" placeholder="{{dish?.naziv}}" [(ngModel)]="modfood.naziv">
+        <input class="form-control bg-dark"style="color:white"  placeholder="{{dish?.opis}}" [(ngModel)]="modfood.opis">
+        <input class="form-control bg-dark"style="color:white"  type="number" placeholder="{{dish?.cijena}}" [(ngModel)]="modfood.cijena">
+        <input class="form-control bg-dark"style="color:white"  placeholder="{{dish?.slika}}"[(ngModel)]="modfood.slika">
         <button class="btn btn-primary" (click)="editDish()">Promijeni</button>
       </div>
 
@@ -170,6 +184,61 @@
 
 
     </div>
+
+    <table class="table " *ngIf="Admintabs===4">
+      <thead>
+      <tr >
+
+        <th scope="col">Sto</th>
+        <th scope="col">Kapacitet</th>
+        <th scope="col">Da li je zauzet ?</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let a of tables">
+        <th scope="row">{{a.id}}</th>
+        <td>{{a.kapacitet}}</td>
+        <td *ngIf="a.rezervisan===0"> <p class="primary">Nije</p> </td>
+        <td *ngIf="a.rezervisan===1"> <p class="danger">Jeste</p> </td>
+        <td *ngIf="a.rezervisan===1"> <p class="danger"> Na ime :{{a.ime_gosta}}</p> </td>
+        <td><button class="btn btn-danger"  ng *ngIf="a.rezervisan === 0" (click)="delTables(a.id)">Izbrisi</button></td>
+      </tr>
+
+      </tbody>
+    </table>
+
+    <div class="form-control" *ngIf="Admintabs==5">
+      <h3> Dodajte stol </h3>
+      <div class="row" >
+        <input class="form-control bg-dark"style="color:white" [(ngModel)]="kapacitet.kapacitet" type="number"  placeholder="Unesite kapacitet" >
+
+        <button class="btn btn-primary" (click)="addTable()">Dodaj</button>
+      </div>
+    </div>
+    <table class="table " *ngIf="Admintabs===6">
+      <thead>
+      <tr >
+
+        <th scope="col">Sto</th>
+        <th scope="col">Kapacitet</th>
+        <th scope="col">Da li je zauzet ?</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let a of tables">
+        <th scope="row">{{a.id}}</th>
+        <td>{{a.kapacitet}}</td>
+        <td *ngIf="a.rezervisan===0"> <p class="primary">Nije</p> </td>
+        <td *ngIf="a.rezervisan===1"> <p class="danger">Jeste</p> </td>
+
+        <td ><button class="btn btn-success" *ngIf="a.rezervisan === 0"  (click)="reserveTableAdmin(a.id,true)">Rezervisi</button> <button class="btn btn-danger"  ng *ngIf="a.rezervisan === 1" (click)="reserveTableAdmin(a.id,false)">Otkazi</button></td>
+
+      </tr>
+
+      </tbody>
+    </table>
 
   </div>
 

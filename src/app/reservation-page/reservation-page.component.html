@@ -1,4 +1,5 @@
 <div *ngIf ="newFormReservation == 0">
+  <H1>Slobodni stolovi</H1>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -8,10 +9,10 @@
 
     </tr>
   </thead>
-  <tbody>
-    <tr *ngFor="let p of pisac">
-      <th scope="row">{{ p }}</th>
-      <td>Mark</td>
+  <tbody *ngFor="let a of tablesfree">
+    <tr >
+      <th scope="row">{{ a.id }}</th>
+      <td>{{a.kapacitet}}</td>
       <td><button (click)="rezervisi()" class="btn btn-primary">Rezervisi</button></td>
     </tr>
   </tbody>
@@ -28,46 +29,9 @@
     <!-- Tabs Titles -->
 
     <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Sekula_Drljevi%C4%87.jpg" id="icon" alt="User Icon" style="width:15px;border-radius: 50%"/>
-    </div>
 
-    <!-- Login Form -->
-    <!-- <form >
-      <form>
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Ime i prezime</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ime i prezime">
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Broj gostiju</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect2">Termin dolaska</label>
-          <form class="form-inline">
-                <input class="col-1" type="text" placeholder = "dan">-
-                <input class="col-2" type="text" placeholder = "mjesec">-
-                <input class="col-3" type="text" placeholder = "godina">
-          </form>
 
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Dodatne zahtjevi</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-      </form>
-      <input type="submit" class="fadeIn fourth" value="Zakazi">
-      <input type="submit" class="fadeIn fourth" value="Otkazi" (click)= "otkazi()">
 
-    </form> -->
     <div id="booking" class="section">
     <div class="section-center">
         <div class="container">
@@ -101,7 +65,7 @@
                                         <option>6</option>
                                     </select> <span class="select-arrow"></span> <span class="form-label">Rooms</span> </div>
                             </div>
-                            
+
                         </div>
                         <div class="row">
                             <div class="col-md-6">

@@ -11,6 +11,26 @@ export class ServisService {
   getMenu(){
     return this.http.get("http://localhost:8000/api/food");
   }
+  getTables(){
+    return this.http.get("http://localhost:8000/api/desks");
+  }
+  getFreeTables(){
+    return this.http.get("http://localhost:8000/api/desksfree");
+  }
+
+  reserveTableAdmin(id){
+
+    return this.http.post("http://localhost:8000/api/reserveDeskAdmin",id);
+  }
+  unreserveTableAdmin(id){
+    return this.http.post("http://localhost:8000/api/unreserveDeskAdmin",id);
+  }
+  delTables(id){
+    return this.http.delete("http://localhost:8000/api/deskDel/" +id);
+  }
+  addTable(kapacitet){
+    return this.http.post("http://localhost:8000/api/addDesk",kapacitet);
+  }
   getSingleDish(id){
     return this.http.get("http://localhost:8000/api/food/"+id);
 
