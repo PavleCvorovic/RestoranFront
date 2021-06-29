@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ServisService} from '../servis.service';
 
 @Component({
@@ -10,6 +10,7 @@ export class AdminBoardComponent implements OnInit {
   meni: any;
   dish:any;
   tables:any;
+  usertables:any;
   Admintabs:number;
   tabMod:boolean=false;
   newfood:any={
@@ -27,6 +28,18 @@ export class AdminBoardComponent implements OnInit {
 kapacitet:any={
   kapacitet:''
 };
+reserveTab:boolean=false;
+reserveId:number;
+reservation:any={
+  ime_gosta:'',
+  broj_gostiju:'',
+  pocetak_rezervacije:'',
+  broj_telefon:''
+
+}
+  @ViewChild('e') select;
+  @ViewChild('f') select1;
+  @ViewChild('r') select2;
 
   constructor(public servis:ServisService) {
   }
@@ -34,22 +47,36 @@ kapacitet:any={
   ngOnInit(): void {
     this.getMenu();
     this.getTables();
+    this.getUsertables()
   }
 
 
+  getUsertables(){
+    this.servis.getUsertables().subscribe(res=>{
+      this.usertables=res;
+    })
 
+  }
 
 
   addfood(){
 
-    this.servis.postMenuItem(this.newfood).subscribe();
+    this.servis.postMenuItem(this.newfood).subscribe(res => {
+      this.meni= res;
+
+
+    });
 
 
   }
   addTable(){
 
 
-    this.servis.addTable(this.kapacitet).subscribe();
+    this.servis.addTable(this.kapacitet).subscribe(res => {
+      this.tables= res;
+
+
+    });
 
 
   }
@@ -70,14 +97,27 @@ kapacitet:any={
 
   }
   reserveTableAdmin(id,sw) {
-    let idd: any = {
-      id
-    }
-    idd.id = id
+
+
     if (sw == true) {
-      this.servis.reserveTableAdmin(idd).subscribe()
+      console.log(this.reservation)
+      this.servis.reserveTableAdmin(this.reserveId,this.reservation).subscribe(res => {
+        this.tables= res;
+
+
+      })
+      this.reserveTab=false;
+
+
     } else {
-      this.servis.unreserveTableAdmin(idd).subscribe()
+      let idd: any = {
+        id
+      }
+      idd.id = id
+      this.servis.unreserveTableAdmin(idd).subscribe(res => {
+        this.tables= res
+                    })
+
     }
   }
 
@@ -87,29 +127,57 @@ kapacitet:any={
 
 
 swichSidebar(a){
+
   switch(a) {
     case "1": {
 this.Admintabs=1;
+this.select.nativeElement.value='';
+this.select2.nativeElement.value='';
+this.reserveTab=false;
       break;
     }
     case "2" :{
       this.Admintabs=2;
+      this.select.nativeElement.value='';
+      this.select2.nativeElement.value='';
+      this.reserveTab=false;
       break;
     }
     case "3" :{
       this.Admintabs=3;
+      this.select.nativeElement.value='';
+      this.select2.nativeElement.value='';
+      this.reserveTab=false;
       break;
     }
     case "4" :{
       this.Admintabs=4;
+      this.select1.nativeElement.value='';
+      this.select2.nativeElement.value='';
+      this.reserveTab=false;
       break;
     }
     case "5" :{
       this.Admintabs=5;
+      this.select1.nativeElement.value='';
+      this.select2.nativeElement.value='';
+      this.reserveTab=false;
       break;
     }
     case "6" :{
+      this.select.nativeElement.value='';
+      this.select1.nativeElement.value='';
+      this.reserveTab=false;
+
       this.Admintabs=6;
+      break;
+    }
+    case "7" :{
+      this.select.nativeElement.value='';
+      this.select1.nativeElement.value='';
+      this.reserveTab=false;
+
+      this.Admintabs=7;
       break;
     }
   }
@@ -127,7 +195,10 @@ this.Admintabs=1;
 
 
 
-
+reservetab(id){
+  this.reserveId=id;
+    this.reserveTab=true;
+}
 
 
   getMenu() {
@@ -155,7 +226,7 @@ this.Admintabs=1;
   }
   delTables(id){
     this.servis.delTables(id).subscribe(res => {
-
+this.tables=res;
       },
       err => {
         console.log(err);
@@ -163,10 +234,11 @@ this.Admintabs=1;
       }
     )
 
+
   }
   delMenuItem(id){
     this.servis.delMenuItem(id).subscribe(res => {
-
+this.meni=res;
       },
       err => {
         console.log(err);

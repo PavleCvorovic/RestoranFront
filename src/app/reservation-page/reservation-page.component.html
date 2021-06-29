@@ -13,7 +13,7 @@
     <tr >
       <th scope="row">{{ a.id }}</th>
       <td>{{a.kapacitet}}</td>
-      <td><button (click)="rezervisi()" class="btn btn-primary">Rezervisi</button></td>
+      <td><button (click)="rezervisi(a.id)" class="btn btn-primary">Rezervisi</button></td>
     </tr>
   </tbody>
 </table>
@@ -40,11 +40,11 @@
                     <div class="form-header">
                         <h1>Rezervisi sto broj: broj stola stoji</h1>
                     </div>
-                    <form>
-                        <div class="form-group"> <input class="form-control" type="text" placeholder="Ime i prezime"> <span class="form-label">Ime i prezime</span> </div>
+
+                        <div class="form-group"> <input class="form-control" type="text" placeholder="Ime i prezime" [(ngModel)]="reservation.ime_gosta"> <span class="form-label">Ime i prezime</span> </div>
                         <div class="row">
                             <div class="col-md-5">
-                                <div class="form-group"> <input class="form-control" type="date" required> <span class="form-label">Datum rezervacije</span> </div>
+                                <div class="form-group"> <input class="form-control" type="date" required [(ngModel)]="reservation.pocetak_rezervacije"> <span class="form-label">Datum rezervacije</span> </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group"> <input  type="number" min="0" max= "23" class="form-control "   placeholder="casova"  style="width:140px "> <span class="form-label">Casova</span> </div>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-10">
-                                <div class="form-group"> <select class="form-control" required>
+                                <div class="form-group"> <select class="form-control" required [(ngModel)]="reservation.broj_gostiju">
                                         <option value="" selected hidden>Broj gostiju</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -63,21 +63,21 @@
                                         <option>4</option>
                                         <option>5</option>
                                         <option>6</option>
-                                    </select> <span class="select-arrow"></span> <span class="form-label">Rooms</span> </div>
+                                    </select> </div>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group"> <input class="form-control" type="email" placeholder="Unesite Email"> <span class="form-label">Email</span> </div>
+                                <div class="form-group"> <input class="form-control" type="email" placeholder="Unesite Email" [(ngModel)]="reservation.email"> <span class="form-label">Email</span> </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group"> <input class="form-control" type="tel" placeholder="Unesite broj telefona"> <span class="form-label">Phone</span> </div>
+                                <div class="form-group"> <input class="form-control" type="tel" placeholder="Unesite broj telefona"[(ngModel)]="reservation.broj_telefon"> <span class="form-label">Phone</span> </div>
                             </div>
                         </div>
-                        <div class="form-btn"> <button class="submit-btn">Rezervisi</button> </div><br>
+                        <div class="form-btn"> <button class="submit-btn" (click)="reserve()">Rezervisi</button> </div><br>
                         <div class="form-btn"> <button class="submit-btn" (click)="otkazi()">Otkazi</button> </div>
-                    </form>
+
                 </div>
             </div>
         </div>

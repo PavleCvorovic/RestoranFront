@@ -18,9 +18,16 @@ export class ServisService {
     return this.http.get("http://localhost:8000/api/desksfree");
   }
 
-  reserveTableAdmin(id){
+  reserveTableAdmin(id,reservation:any){
 
-    return this.http.post("http://localhost:8000/api/reserveDeskAdmin",id);
+    return this.http.post("http://localhost:8000/api/reserveDesk/"+id,reservation);
+  }
+  getUsertables(){
+    return this.http.get("http://localhost:8000/api/reservedByUser");
+  }
+  reserveTableUser(id,reservation:any){
+
+    return this.http.post("http://localhost:8000/api/reserveDeskUser/"+id,reservation);
   }
   unreserveTableAdmin(id){
     return this.http.post("http://localhost:8000/api/unreserveDeskAdmin",id);
