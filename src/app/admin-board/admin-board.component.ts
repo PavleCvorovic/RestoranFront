@@ -80,6 +80,7 @@ reservation:any={
 
     this.servis.addTable(this.kapacitet).subscribe(res => {
       this.tables= res;
+      Swal.fire('Uspjesno !', 'Dodali ste sto !', 'success')
 this.kapacitet="";
 
     });
@@ -231,8 +232,10 @@ reservetab(id){
     )
   }
   delTables(id){
+
     this.servis.delTables(id).subscribe(res => {
 this.tables=res;
+        Swal.fire('Uspjesno !', 'Izbrisali  ste sto !', 'success')
       },
       err => {
         console.log(err);
@@ -245,6 +248,7 @@ this.tables=res;
   delMenuItem(id){
     this.servis.delMenuItem(id).subscribe(res => {
 this.meni=res;
+        Swal.fire('Uspjesno !', 'Izbrisali ste hranu !', 'success')
       },
       err => {
         console.log(err);
