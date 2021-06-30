@@ -1,3 +1,4 @@
+import { AdminGuardGuard } from './../admin-guard.guard';
 import { ServisService } from './../servis.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor(public fb:FormBuilder, public http:HttpClient, public router:Router, public servis:ServisService) { }
+  constructor(public fb:FormBuilder, public http:HttpClient, public router:Router, public servis:ServisService, public guard:AdminGuardGuard) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +30,7 @@ export class AdminLoginComponent implements OnInit {
         .subscribe((result: any)=>
       {
         this.servis.logovan = true;
+        this.guard.logovan = true;
         this.router.navigate(['adminPanel']);
       });
 

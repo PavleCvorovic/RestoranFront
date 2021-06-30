@@ -1,3 +1,4 @@
+import { AdminGuardGuard } from './../admin-guard.guard';
 import { ServisService } from './../servis.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -10,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public servis:ServisService, public router:Router, public http:HttpClient) { }
+  constructor(public servis:ServisService, public router:Router, public http:HttpClient, public guard:AdminGuardGuard) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +23,7 @@ export class NavbarComponent implements OnInit {
     {
 
       this.servis.logovan= false;
+      this.guard.logovan = false;
       this.router.navigate(['adminLogin']);
 
     })
