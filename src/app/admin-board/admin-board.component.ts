@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import Swal from 'sweetalert2';
 import {ServisService} from '../servis.service';
 
 @Component({
@@ -63,6 +64,7 @@ reservation:any={
 
     this.servis.postMenuItem(this.newfood).subscribe(res => {
       this.meni= res;
+      Swal.fire('Uspjesno !', 'Dodali ste hranu !', 'success')
 
 
     });
