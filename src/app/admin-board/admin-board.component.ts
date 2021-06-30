@@ -66,7 +66,7 @@ reservation:any={
 
 
     });
-
+    this.newfood.naziv = "";
 
   }
   addTable(){
