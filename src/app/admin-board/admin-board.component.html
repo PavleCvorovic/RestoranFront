@@ -172,6 +172,7 @@
         <input class="form-control bg-dark"style="color:white"  type="number" placeholder="{{dish?.cijena}}" [(ngModel)]="modfood.cijena">
         <input class="form-control bg-dark"style="color:white"  placeholder="{{dish?.slika}}"[(ngModel)]="modfood.slika">
         <button class="btn btn-primary" (click)="editDish()">Promijeni</button>
+
       </div>
 
 </div>
@@ -271,6 +272,8 @@
         <th scope="col">Na ime :</th>
         <th scope="col">Kontakt</th>
         <th scope="col">Broj gosti</th>
+        <th scope="col">Pocetak rezervacije</th>
+
 
       </tr>
       </thead>
@@ -281,7 +284,9 @@
         <td>{{a.ime_gosta}}</td>
         <td>{{a.email}} i {{a.broj_telefon}}</td>
         <td>{{a.broj_gostiju}}</td>
+        <td>{{a.pocetak_rezervacije}}</td>
 <td><button class="btn btn-primary">Posalji potvrdu.</button></td>
+        <button class="btn btn-danger" (click)="reserveTableAdmin(a.id,false)">Otkazi</button>
       </tr>
 
       </tbody>
