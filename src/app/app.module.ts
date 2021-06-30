@@ -7,7 +7,7 @@ import { ReservationPageComponent } from './reservation-page/reservation-page.co
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminBoardComponent } from './admin-board/admin-board.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from "@angular/forms";
+import {FormsModule,ReactiveFormsModule} from "@angular/forms";
 import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
@@ -24,6 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
+        ReactiveFormsModule
 
 
     ],
