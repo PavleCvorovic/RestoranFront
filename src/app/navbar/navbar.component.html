@@ -12,7 +12,7 @@
           <a class="nav-link" [routerLink]="['reservation']">Rezervisi mjesto </a>
         </li>
         <li class="nav-item" *ngIf = "servis.logovan == false">
-          <a class="nav-link" [routerLink]="['adminLogin']" >Log in</a>
+          <a class="nav-link" [routerLink]="['adminLogin']" >Admin</a>
         </li>
         <li class="nav-item" *ngIf = "servis.logovan == true">
           <a class="nav-link" [routerLink]="['adminPanel']"  >Admin</a>
