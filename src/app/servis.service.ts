@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 export class ServisService {
 
   constructor(private http: HttpClient){ }
+  logovan = false;
 
   getMenu(){
     return this.http.get("http://localhost:8000/api/food");

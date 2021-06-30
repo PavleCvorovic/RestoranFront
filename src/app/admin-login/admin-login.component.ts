@@ -1,3 +1,4 @@
+import { ServisService } from './../servis.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AdminLoginComponent implements OnInit {
 
-  constructor(public fb:FormBuilder, public http:HttpClient, public router:Router) { }
+  constructor(public fb:FormBuilder, public http:HttpClient, public router:Router, public servis:ServisService) { }
 
   ngOnInit(): void {
   }
@@ -24,10 +25,10 @@ export class AdminLoginComponent implements OnInit {
 
   submit()
   {
-      this.http.post('http://polovni-telefoni.tk/laravel/public/api/login', this.unos_admin.getRawValue(),{withCredentials:true})
+      this.http.post('http://localhost:8000/api/login', this.unos_admin.getRawValue(),{withCredentials:true})
         .subscribe((result: any)=>
       {
-
+        this.servis.logovan = true;
         this.router.navigate(['adminPanel']);
       });
 
