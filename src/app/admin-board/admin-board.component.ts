@@ -67,6 +67,10 @@ reservation:any={
 
     });
     this.newfood.naziv = "";
+    this.newfood.opis = "";
+    this.newfood.cijena = "";
+    this.newfood.slika = "";
+
 
   }
   addTable(){
@@ -74,7 +78,7 @@ reservation:any={
 
     this.servis.addTable(this.kapacitet).subscribe(res => {
       this.tables= res;
-
+this.kapacitet="";
 
     });
 
