@@ -45,14 +45,9 @@
                         <div class="form-group"> <input class="form-control" type="text" placeholder="Ime i prezime" [(ngModel)]="reservation.ime_gosta"> <span class="form-label">Ime i prezime</span> </div>
                         <div class="row">
                             <div class="col-md-5">
-                                <div class="form-group"> <input class="form-control" type="date" required [(ngModel)]="reservation.pocetak_rezervacije"> <span class="form-label">Datum rezervacije</span> </div>
+                                <div class="form-group"> <input class="form-control" type="datetime-local" required [(ngModel)]="reservation.pocetak_rezervacije"> <span class="form-label">Datum rezervacije</span> </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group"> <input  type="number" min="0" max= "23" class="form-control "   placeholder="casova"  style="width:140px "> <span class="form-label">Casova</span> </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group"> <input  type="number" min="0" max= "59" class="form-control "   placeholder="minuta"  style="width:140px "> <span class="form-label">Minuta</span> </div>
-                            </div>
+
                         </div>
                         <div class="row">
                             <div class="col-md-10">

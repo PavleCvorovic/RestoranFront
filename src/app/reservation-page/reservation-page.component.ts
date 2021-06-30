@@ -18,6 +18,7 @@ export class ReservationPageComponent implements OnInit {
     broj_telefon:''
 
   }
+
   reserveId:number
   ngOnInit(): void {
     this.getTables()
@@ -30,7 +31,6 @@ export class ReservationPageComponent implements OnInit {
 
     this.servis.getFreeTables().subscribe(res => {
         this.tablesfree = res;
-        console.log(this.tablesfree);
 
       },
       err => {
@@ -49,7 +49,12 @@ export class ReservationPageComponent implements OnInit {
       this.reserveId=id;
   }
   reserve(){
-    this.servis.reserveTableUser(this.reserveId,this.reservation).subscribe();
+
+    this.servis.reserveTableUser(this.reserveId,this.reservation).subscribe(res => {
+      this.tablesfree = res;
+      this.newFormReservation = 0;
+
+    });
   }
 
   otkazi()
