@@ -81,7 +81,7 @@ reservation:any={
     this.servis.addTable(this.kapacitet).subscribe(res => {
       this.tables= res;
       Swal.fire('Uspjesno !', 'Dodali ste sto !', 'success')
-this.kapacitet="";
+
 
     });
 

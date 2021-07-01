@@ -12,13 +12,13 @@
           <a class="nav-link" [routerLink]="['reservation']">Rezervisi mjesto </a>
         </li>
         <li class="nav-item" *ngIf = "servis.logovan == false">
-          <a class="nav-link" [routerLink]="['adminLogin']" >Admin</a>
+          <a class="nav-link" [routerLink]="['adminLogin']" href="#" >Admin</a>
         </li>
         <li class="nav-item" *ngIf = "servis.logovan == true">
-          <a class="nav-link" [routerLink]="['adminPanel']"  >Admin</a>
+          <a class="nav-link" [routerLink]="['adminPanel']" href="#" >Admin</a>
         </li>
         <li class="nav-item" *ngIf = "servis.logovan == true">
-          <a class="nav-link" (click) ="odjavi()" >Odjavi se</a>
+          <a class="nav-link" (click) ="odjavi()" href="#">Odjavi se</a>
         </li>
       </ul>
     </div>
