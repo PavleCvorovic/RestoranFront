@@ -245,7 +245,7 @@
       <h1>Rezervisi sto broj : {{reserveId}}</h1>
       <input placeholder="Ime i Prezime" class="form-control bg-dark" style="color:white" [(ngModel)]="reservation.ime_gosta">
 
-      <div class="form-group"> <input class="form-control bg-dark" style="color:white" type="date" required [(ngModel)]="reservation.pocetak_rezervacije">  </div>
+      <div class="form-group"> <input class="form-control bg-dark" style="color:white" type="datetime-local" required [(ngModel)]="reservation.pocetak_rezervacije">  </div>
           <div > <select class="form-control bg-dark" style="color: whitesmoke" required [(ngModel)]="reservation.broj_gostiju">
             <option> Broj gostiju</option>
             <option value="1">1</option>
@@ -255,9 +255,7 @@
             <option value="5">5</option>
             <option value="6">6</option>
           </select>  </div>
-
-      <input class="form-control bg-dark" style="color:white" placeholder="Broj sati">
-      <input class="form-control bg-dark" style="color:white" placeholder="Broj minuta">
+      
       <input class="form-control bg-dark" style="color:white" placeholder="Email adresa"  [(ngModel)]="reservation.email">
       <input class="form-control bg-dark" style="color:white" placeholder="Broj telefona" [(ngModel)]="reservation.broj_telefon">
       <td ><button class="btn btn-success"  (click)="reserveTableAdmin(this.reserveId,true)">Rezervisi</button> </td>
