@@ -12,9 +12,10 @@ export class ReservationPageComponent implements OnInit {
   tablesfree:any;
   newFormReservation = 0;
   reservation:any={
+    desk_id:'',
     ime_gosta:'',
     broj_gostiju:'',
-    pocetak_rezervacije:'',
+    datum:'',
     broj_telefon:''
 
   }
@@ -29,7 +30,7 @@ export class ReservationPageComponent implements OnInit {
   getTables(){
 
 
-    this.servis.getFreeTables().subscribe(res => {
+    this.servis.getTables().subscribe(res => {
         this.tablesfree = res;
 
       },
@@ -46,11 +47,12 @@ export class ReservationPageComponent implements OnInit {
   {
 
       this.newFormReservation = 1;
-      this.reserveId=id;
+
+      this.reservation.desk_id=id;
   }
   reserve(){
 
-    this.servis.reserveTableUser(this.reserveId,this.reservation).subscribe(res => {
+    this.servis.reserveTableUser(this.reservation).subscribe(res => {
       this.tablesfree = res;
       this.newFormReservation = 0;
 

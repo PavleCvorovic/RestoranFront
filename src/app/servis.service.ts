@@ -15,9 +15,7 @@ export class ServisService {
   getTables(){
     return this.http.get("http://localhost:8000/api/desks");
   }
-  getFreeTables(){
-    return this.http.get("http://localhost:8000/api/desksfree");
-  }
+
 
   reserveTableAdmin(id,reservation:any){
 
@@ -26,9 +24,9 @@ export class ServisService {
   getUsertables(){
     return this.http.get("http://localhost:8000/api/reservedByUser");
   }
-  reserveTableUser(id,reservation:any){
+  reserveTableUser(reservation:any){
 
-    return this.http.post("http://localhost:8000/api/reserveDeskUser/"+id,reservation);
+    return this.http.post("http://localhost:8000/api/postReservationUser",reservation);
   }
   unreserveTableAdmin(id){
     return this.http.post("http://localhost:8000/api/unreserveDeskAdmin",id);
