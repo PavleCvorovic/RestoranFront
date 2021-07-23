@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ServisService} from '../servis.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-reservation-page',
@@ -24,7 +26,6 @@ export class ReservationPageComponent implements OnInit {
   ngOnInit(): void {
     this.getTables()
   }
-
 
 
   getTables(){
@@ -53,10 +54,17 @@ export class ReservationPageComponent implements OnInit {
   reserve(){
 
     this.servis.reserveTableUser(this.reservation).subscribe(res => {
-      this.tablesfree = res;
-      this.newFormReservation = 0;
+      let a=res;
+      if (a==1){
+        Swal.fire('Nazalost', 'Stol je vec rezervisan  !', 'warning')
+a=0;
+      }else {   Swal.fire('Uspjesno', 'Ocekujemo Vas '+ this.reservation.ime_gosta+ " !", 'success') ;a=0;
+      }      this.newFormReservation = 0;
 
-    });
+    }
+    );
+
+
   }
 
   otkazi()

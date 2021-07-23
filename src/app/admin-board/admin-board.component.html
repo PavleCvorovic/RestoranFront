@@ -201,12 +201,14 @@
         <td>{{a.kapacitet}}</td>
         <td *ngIf="a.rezervisan===0"> <p class="primary">Nije</p> </td>
         <td *ngIf="a.rezervisan===1"> <p class="danger">Jeste</p> </td>
-        <td *ngIf="a.rezervisan===1"> <p class="danger"> Na ime :{{a.ime_gosta}}</p> </td>
-        <td><button class="btn btn-danger"  ng *ngIf="a.rezervisan === 0" (click)="delTables(a.id)">Izbrisi</button></td>
+
+        <td><button class="btn btn-danger"   (click)="delTables(a.id)">Izbrisi</button></td>
       </tr>
 
       </tbody>
+
     </table>
+
   </div>
     <div class="form-control" *ngIf="Admintabs==5">
       <h3> Dodajte stol </h3>
@@ -216,14 +218,15 @@
         <button class="btn btn-primary" (click)="addTable()">Dodaj</button>
       </div>
     </div>
-    <table class="table " *ngIf="Admintabs===6">
+    <div *ngIf="Admintabs===6">
+    <table class="table " >
 
       <thead>
       <tr >
 
         <th scope="col">Sto</th>
         <th scope="col">Kapacitet</th>
-        <th scope="col">Da li je zauzet ?</th>
+
 
       </tr>
       </thead>
@@ -231,35 +234,85 @@
       <tr *ngFor="let a of tables">
         <th scope="row">{{a.id}}</th>
         <td>{{a.kapacitet}}</td>
-        <td *ngIf="a.rezervisan===0"> <p class="primary">Nije</p> </td>
-        <td *ngIf="a.rezervisan===1"> <p class="danger">Jeste</p> </td>
-
-        <td ><button class="btn btn-success" *ngIf="a.rezervisan === 0"  (click)="reservetab(a.id)">Rezervisi</button> <button class="btn btn-danger"  ng *ngIf="a.rezervisan === 1" (click)="reserveTableAdmin(a.id,false)">Otkazi</button></td>
-
+        <td ><button class="btn btn-success" (click)="state(a.id)" >Pogledaj rezevacije </button></td>
       </tr>
-
       </tbody>
     </table>
 
+
+      <table class="table" *ngIf="switchResId===true">
+        <thead>
+        <tr>
+
+          <th scope="col">Sto</th>
+          <th scope="col">Ime rezervacije</th>
+          <th scope="col">Broj gostiju</th>
+          <th scope="col">Pocetak rezervacije</th>
+          <th scope="col">Email</th>
+          <th scope="col">Broj telefona</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let a of ReservationId">
+
+          <td>{{a.desk_id}}</td>
+          <td>{{a.ime_gosta}}</td>
+          <td>{{a.broj_gostiju}}</td>
+          <td>{{a.datum_rezervacije}}</td>
+          <td>{{a.email}}</td>
+          <td>{{a.broj_telefon}}</td>
+          <td> <button class="btn btn-danger " (click)="delRes(a.id)"> Izbrisi</button></td>
+        </tbody>
+
+        <br>
+        <h3 >Dodaj novu rezervaciju  <button class="btn btn-facebook" (click)="sw()">Forma za rezervaciju</button></h3>
+
+      </table>
+
+
+    </div>
     <div class="col-md-6" *ngIf="reserveTab===true">
-      <h1>Rezervisi sto broj : {{reserveId}}</h1>
-      <input placeholder="Ime i Prezime" class="form-control bg-dark" style="color:white" [(ngModel)]="reservation.ime_gosta">
 
-      <div class="form-group"> <input class="form-control bg-dark" style="color:white" type="datetime-local" required [(ngModel)]="reservation.pocetak_rezervacije">  </div>
-          <div > <select class="form-control bg-dark" style="color: whitesmoke" required [(ngModel)]="reservation.broj_gostiju">
-            <option> Broj gostiju</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-          </select>  </div>
-      
-      <input class="form-control bg-dark" style="color:white" placeholder="Email adresa"  [(ngModel)]="reservation.email">
-      <input class="form-control bg-dark" style="color:white" placeholder="Broj telefona" [(ngModel)]="reservation.broj_telefon">
-      <td ><button class="btn btn-success"  (click)="reserveTableAdmin(this.reserveId,true)">Rezervisi</button> </td>
+      <div class="row">
+        <div class="booking-form">
+          <div class="form-header">
 
+          </div>
+          <h1>Rezervisi sto broj : {{reserveId}}</h1>
+          <div class="form-group"> <input class="form-control" type="text" placeholder="Ime i prezime" [(ngModel)]="reservation.ime_gosta"> <span class="form-label">Ime i prezime</span> </div>
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form-group"> <input  class="form-control" type="datetime-local"   required [(ngModel)]="reservation.datum"> <span class="form-label">Datum rezervacije</span> </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-group"> <select class="form-control" required [(ngModel)]="reservation.broj_gostiju">
+                <option value="" selected hidden>Broj gostiju</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+              </select> </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group"> <input class="form-control" type="email" placeholder="Unesite Email" [(ngModel)]="reservation.email"> <span class="form-label">Email</span> </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group"> <input class="form-control" type="tel" placeholder="Unesite broj telefona"[(ngModel)]="reservation.broj_telefon"> <span class="form-label">Phone</span> </div>
+            </div>
+          </div>
+
+        <button class="btn btn-facebook" (click)="reserveTableAdmin(reserveId)">rezervisi</button>
+        </div>
+      </div>
     </div>
     <table class="table " *ngIf="Admintabs===7">
 
@@ -267,7 +320,7 @@
       <tr >
 
         <th scope="col">Sto</th>
-        <th scope="col">Kapacitet</th>
+
         <th scope="col">Na ime :</th>
         <th scope="col">Kontakt</th>
         <th scope="col">Broj gosti</th>
@@ -276,25 +329,25 @@
 
       </tr>
       </thead>
-      <tbody>
+
       <tr *ngFor="let a of usertables">
-        <th scope="row">{{a.id}}</th>
-        <td>{{a.kapacitet}}</td>
+        <th scope="row">{{a.desk_id}}</th>
+
         <td>{{a.ime_gosta}}</td>
         <td>{{a.email}} i {{a.broj_telefon}}</td>
         <td>{{a.broj_gostiju}}</td>
-        <td>{{a.pocetak_rezervacije}}</td>
-<td><button class="btn btn-primary">Posalji potvrdu.</button></td>
-    <td>   <button class="btn btn-danger" (click)="reserveTableAdmin(a.id,false)">Otkazi</button></td>
+        <td>{{a.datum_rezervacije}}</td>
+
+
       </tr>
 
-      </tbody>
+
     </table>
-
+  </div>
 
   </div>
   </div>
-</div>
+
 <!-- container-scroller -->
 <!-- plugins:js -->
 <script src="/assets/vendors/js/vendor.bundle.base.js"></script>

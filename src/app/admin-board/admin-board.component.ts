@@ -14,12 +14,18 @@ export class AdminBoardComponent implements OnInit {
   usertables:any;
   Admintabs:number;
   tabMod:boolean=false;
+  ReservationId:any;
+  switchResId:boolean=false;
   newfood:any={
     naziv:'',
     opis:'',
     slika:'',
     cijena:''
   };
+  res:any={
+    id:'',
+    desk_id:''
+  }
   modfood:any={
     naziv:'',
     opis:'',
@@ -31,13 +37,14 @@ kapacitet:any={
 };
 reserveTab:boolean=false;
 reserveId:number;
-reservation:any={
-  ime_gosta:'',
-  broj_gostiju:'',
-  pocetak_rezervacije:'',
-  broj_telefon:''
+  reservation:any={
+    desk_id:'',
+    ime_gosta:'',
+    broj_gostiju:'',
+    datum:'',
+    broj_telefon:''
 
-}
+  }
   @ViewChild('e') select;
   @ViewChild('f') select1;
   @ViewChild('r') select2;
@@ -48,16 +55,24 @@ reservation:any={
   ngOnInit(): void {
     this.getMenu();
     this.getTables();
-    this.getUsertables()
+    this.getallresGuest()
+  }
+sw(){
+    this.reserveTab=true;
+
+}
+state(a){
+    this.reserveId=a;
+    this.res.desk_id=a;
+    this.switchResId=true;
+this.servis.getReservatons(a).subscribe(res=>
+  {
+    this.ReservationId=res;
+    console.log(this.ReservationId);
   }
 
-
-  getUsertables(){
-    this.servis.getUsertables().subscribe(res=>{
-      this.usertables=res;
-    })
-
-  }
+)
+}
 
 
   addfood(){
@@ -103,31 +118,47 @@ reservation:any={
 
 
   }
-  reserveTableAdmin(id,sw) {
+  reserveTableAdmin(id) {
 
 
-    if (sw == true) {
+this.reservation.desk_id=id;
       console.log(this.reservation)
-      this.servis.reserveTableAdmin(this.reserveId,this.reservation).subscribe(res => {
-        this.tables= res;
+      this.servis.reserveTableAdmin(this.reservation).subscribe(res => {
+          let a=res;
+          if (a==1){
+            Swal.fire('Nazalost', 'Stol je vec rezervisan  !', 'warning')
+            a=0;
+          }else {   Swal.fire('Uspjesno', 'Ocekujemo Vas '+ this.reservation.ime_gosta+ " !", 'success') ;a=0;
+          }
+
+        }
 
 
-      })
-      this.reserveTab=false;
+      );
 
 
-    } else {
-      let idd: any = {
-        id
-      }
-      idd.id = id
-      this.servis.unreserveTableAdmin(idd).subscribe(res => {
-        this.tables= res
-                    })
+    this.reservation.desk_id='';
+    this.reservation.broj_gostiju='';
+    this.reservation.broj_telefon='';
+    this.reservation.datum='';
+    this.reservation.ime_gosta='';
+    this.reservation.email='';
+
+
+
+
 
     }
-  }
 
+
+
+delRes(id){
+
+    this.servis.delRes(id).subscribe(res=>{
+      this.ReservationId=res;
+    })
+
+}
 
 
 
@@ -141,6 +172,7 @@ this.Admintabs=1;
 this.select.nativeElement.value='';
 this.select2.nativeElement.value='';
 this.reserveTab=false;
+this.switchResId=false;
       break;
     }
     case "2" :{
@@ -148,6 +180,7 @@ this.reserveTab=false;
       this.select.nativeElement.value='';
       this.select2.nativeElement.value='';
       this.reserveTab=false;
+      this.switchResId=false;
       break;
     }
     case "3" :{
@@ -155,6 +188,7 @@ this.reserveTab=false;
       this.select.nativeElement.value='';
       this.select2.nativeElement.value='';
       this.reserveTab=false;
+      this.switchResId=false;
       break;
     }
     case "4" :{
@@ -162,6 +196,7 @@ this.reserveTab=false;
       this.select1.nativeElement.value='';
       this.select2.nativeElement.value='';
       this.reserveTab=false;
+      this.switchResId=false;
       break;
     }
     case "5" :{
@@ -169,12 +204,14 @@ this.reserveTab=false;
       this.select1.nativeElement.value='';
       this.select2.nativeElement.value='';
       this.reserveTab=false;
+      this.switchResId=false;
       break;
     }
     case "6" :{
       this.select.nativeElement.value='';
       this.select1.nativeElement.value='';
       this.reserveTab=false;
+      this.switchResId=false;
 
       this.Admintabs=6;
       break;
@@ -183,6 +220,7 @@ this.reserveTab=false;
       this.select.nativeElement.value='';
       this.select1.nativeElement.value='';
       this.reserveTab=false;
+      this.switchResId=false;
 
       this.Admintabs=7;
       break;
@@ -191,7 +229,12 @@ this.reserveTab=false;
 
 }
 
-
+getallresGuest(){
+    this.servis.getReservatonsall().subscribe(res=>{
+      this.usertables=res;
+      console.log(this.usertables);
+    })
+}
 
 
 

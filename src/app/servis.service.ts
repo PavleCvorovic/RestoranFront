@@ -16,21 +16,25 @@ export class ServisService {
     return this.http.get("http://localhost:8000/api/desks");
   }
 
+delRes(id){
 
-  reserveTableAdmin(id,reservation:any){
+  return this.http.delete("http://localhost:8000/api/reservationDel/"+id);
+}
+  reserveTableAdmin(reservation:any){
 
-    return this.http.post("http://localhost:8000/api/reserveDesk/"+id,reservation);
+    return this.http.post("http://localhost:8000/api/postReservationAdmin",reservation);
   }
-  getUsertables(){
-    return this.http.get("http://localhost:8000/api/reservedByUser");
+  getReservatons(id){
+    return this.http.get("http://localhost:8000/api/getReservationsId/"+id);
+  }
+  getReservatonsall(){
+    return this.http.get("http://localhost:8000/api/getReservationall");
   }
   reserveTableUser(reservation:any){
 
     return this.http.post("http://localhost:8000/api/postReservationUser",reservation);
   }
-  unreserveTableAdmin(id){
-    return this.http.post("http://localhost:8000/api/unreserveDeskAdmin",id);
-  }
+
   delTables(id){
     return this.http.delete("http://localhost:8000/api/deskDel/" +id);
   }
@@ -51,6 +55,7 @@ export class ServisService {
    return this.http.post("http://localhost:8000/api/editFood/" +id ,editinfo);
 
  }
+
 
 
 }
